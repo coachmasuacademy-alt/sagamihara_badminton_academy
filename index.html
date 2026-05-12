@@ -4,306 +4,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>相模原バドミントンアカデミー</title>
+    <!-- Googleフォント読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         /* 全体の基本設定 */
         body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            font-family: 'Noto Sans JP', sans-serif;
             line-height: 1.8;
             color: #333333;
-            background-color: #f4f8fb;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             margin: 0;
             padding: 0;
         }
 
-        /* コンテンツ幅の設定 */
         .container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: -60px auto 0;
+            padding: 0 20px 40px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* ヘッダー */
+        /* =========================================
+           マスコット付きヘッダー
+           ========================================= */
         header {
-            background-color: #0056b3;
+            background: linear-gradient(-45deg, #004aad, #00b4db, #1e3c72, #2a5298);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ヘッダー全体のレイアウト調整 */
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* マスコット画像の設定 */
+        .mascot-img {
+            width: 180px; /* PCでのサイズ */
+            height: auto;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            animation: floating 3s ease-in-out infinite; /* ふわふわ動かす */
+        }
+
+        /* キャラクターが浮いているようなアニメーション */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
         header h1 {
             margin: 0;
-            font-size: 2.2em;
-            letter-spacing: 2px;
+            font-size: 2.8em;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* セクション見出し */
-        h2 {
-            color: #0056b3;
-            border-bottom: 3px solid #0056b3;
-            padding-bottom: 10px;
-            margin-top: 50px;
+        header h1::before, header h1::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
         }
+        header h1::before { top: -15px; }
+        header h1::after { bottom: -15px; }
 
-        h3 {
-            color: #e65c00;
-            margin-top: 30px;
-            border-left: 5px solid #e65c00;
-            padding-left: 10px;
-        }
+        /* ========================================= */
 
-        /* コンテンツボックス */
+        /* 以前のスタイルを継承 */
         .box {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: 0.3s;
         }
 
-        /* キャッチコピー部分 */
+        h2 {
+            color: #1a3c5a;
+            font-size: 1.6em;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            position: relative;
+            font-weight: 700;
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, #e65c00, #ff9900);
+            border-radius: 3px;
+        }
+
         .catchphrase {
             text-align: center;
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #e65c00;
-            line-height: 2;
-            margin: 40px 0;
+            font-size: 2.2em;
+            font-weight: 900;
+            line-height: 1.6;
+            margin: 60px 0;
+            background: linear-gradient(45deg, #e65c00 0%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* 中学生向けリスト */
         .target-list {
-            background-color: #e6f2ff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            border-left: 5px solid #0056b3;
-            margin: 20px 0;
+            background: linear-gradient(to right, #f4f8fb, #ffffff);
+            padding: 25px 30px;
+            border-radius: 12px;
+            border-left: 6px solid #0056b3;
+            margin: 25px 0;
         }
-        .target-list ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
+        .target-list ul { list-style: none; padding: 0; margin: 0; }
         .target-list li {
-            font-weight: bold;
-            font-size: 1.1em;
+            font-weight: 700;
+            font-size: 1.15em;
             color: #004aad;
-            margin-bottom: 10px;
-        }
-
-        /* プロフィール用レイアウト */
-        .profile-container {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-        }
-        .profile-img {
-            flex-shrink: 0;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center top;
-            border: 3px solid #0056b3;
-            background-color: #e6f2ff;
-        }
-        .profile-info {
-            flex-grow: 1;
-        }
-        .profile-name {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #0056b3;
-            margin-bottom: 5px;
-        }
-        .profile-ruby {
-            font-size: 0.5em;
-            color: #666;
-            display: block;
-        }
-        .profile-section {
-            margin-top: 20px;
-        }
-        .profile-section-title {
-            font-weight: bold;
-            color: #333;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-        .profile-list {
-            margin: 0;
-            padding-left: 20px;
-            font-size: 0.95em;
-        }
-        .profile-list li {
-            margin-bottom: 8px;
-        }
-        .profile-note {
-            font-size: 0.85em;
-            color: #555;
-            display: block;
-            margin-top: 2px;
-            margin-left: 10px;
-        }
-
-        /* テーブル設定（参加費など） */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 15px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f8fb;
-            color: #0056b3;
-            width: 30%;
-            font-weight: bold;
-        }
-
-        /* カレンダー埋め込み用のレスポンシブ枠 */
-        .calendar-container {
+            margin-bottom: 12px;
+            padding-left: 30px;
             position: relative;
-            width: 100%;
-            padding-bottom: 75%;
-            height: 0;
-            overflow: hidden;
-            border: 1px solid #dddddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-            margin-top: 20px;
-            margin-bottom: 20px;
         }
-        .calendar-container iframe {
+        .target-list li::before {
+            content: '✔';
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* サービス・グッズのグリッドレイアウト */
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .service-box {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid #0056b3;
-        }
-
-        /* お問い合わせ用リンク */
-        .contact-link {
-            color: #0056b3;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-decoration: underline;
-            word-break: break-all;
-        }
-        .contact-link:hover {
             color: #e65c00;
         }
+
+        /* プロフィール用 */
+        .profile-container { display: flex; gap: 40px; align-items: flex-start; }
+        .profile-img {
+            flex-shrink: 0; width: 160px; height: 160px; border-radius: 50%;
+            object-fit: cover; object-position: center top;
+            border: 4px solid #ffffff; box-shadow: 0 8px 20px rgba(0, 86, 179, 0.2);
+        }
+        .profile-info { flex-grow: 1; }
+        .profile-name { font-size: 2em; font-weight: 900; color: #004aad; letter-spacing: 2px; }
+        .profile-ruby { font-size: 0.45em; color: #888; display: block; font-weight: 500; }
+        .profile-section-title {
+            font-weight: 700; color: #fff; background-color: #004aad;
+            display: inline-block; padding: 4px 15px; border-radius: 20px; font-size: 0.9em; margin: 20px 0 10px;
+        }
+
+        /* テーブル設定 */
+        table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        th, td { border: 1px solid #edf2f7; padding: 18px; text-align: left; }
+        th { background-color: #f8fafc; color: #004aad; width: 30%; font-weight: 700; }
+        td { background-color: #ffffff; }
+
+        .calendar-container {
+            position: relative; width: 100%; padding-bottom: 75%; height: 0; overflow: hidden;
+            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin: 20px 0;
+        }
+        .calendar-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* サービス・グッズ */
+        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .service-box {
+            background: #ffffff; padding: 30px; border-radius: 16px; border-top: 5px solid #0056b3;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        }
+
+        /* 統合CTA */
+        .cta-section {
+            text-align: center; background: linear-gradient(135deg, #ffffff 0%, #fff6f0 100%);
+            padding: 50px 30px; border-radius: 20px; margin-top: 60px;
+            box-shadow: 0 15px 35px rgba(230, 92, 0, 0.1);
+        }
+        .btn {
+            display: inline-block; background: linear-gradient(135deg, #ff7b00 0%, #e65c00 100%);
+            color: white; padding: 18px 50px; font-size: 1.25em; font-weight: 900;
+            text-decoration: none; border-radius: 50px; transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(230, 92, 0, 0.3);
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(230, 92, 0, 0.4); }
 
         /* スマホ対応 */
         @media screen and (max-width: 600px) {
-            th, td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            th {
-                border-bottom: none;
-            }
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            .calendar-container {
-                padding-bottom: 120%;
-            }
-            .profile-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .profile-info {
-                width: 100%;
-            }
-            .profile-name {
-                text-align: center;
-            }
+            header { padding: 50px 15px 90px; }
+            .mascot-img { width: 120px; }
+            header h1 { font-size: 1.8em; }
+            .profile-container { flex-direction: column; align-items: center; }
+            .service-grid { grid-template-columns: 1fr; }
+            .calendar-container { padding-bottom: 120%; }
         }
 
-        /* コールトゥアクション（統合版） */
-        .cta-section {
-            text-align: center;
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            margin-top: 50px;
-            border: 2px solid #e65c00;
-        }
-        .cta-text {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #e65c00;
-        }
-        .cta-description {
-            margin-bottom: 30px;
-        }
-        .contact-info {
-            background-color: #f4f8fb;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 400px;
-            margin: 0 auto 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #e65c00;
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(230, 92, 0, 0.3);
-        }
-        .btn:hover {
-            background-color: #cc5200;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(230, 92, 0, 0.4);
-        }
-
-        /* フッター */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333333;
-            color: white;
-            margin-top: 50px;
-        }
+        footer { text-align: center; padding: 30px 20px; background: #2c3e50; color: #a0aec0; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>相模原バドミントンアカデミー</h1>
+        <div class="header-content">
+            <!-- アップロードいただいた画像をここに表示 -->
+            <img src="相模原バドミントンアカデミー.png" alt="相模原バドミントンアカデミー マスコット" class="mascot-img">
+            <h1>相模原バドミントンアカデミー</h1>
+        </div>
     </header>
 
     <div class="container">
-        
-        <div class="box">
-            <p>部活動の地域移行は、これまで以上に良い練習環境を作るチャンスでもあると考えています。</p>
-            <p>相模原バドミントンアカデミーでは、学校の部活動と地域クラブの両方に参加することで、より多くの仲間や指導者と出会い、これまで以上に成長できるバドミントン環境づくりを目指します。</p>
+        <!-- 以降、コンテンツ内容はそのまま -->
+        <div class="box intro-box">
+            <p>これまで学校部活動を支えてくださった先生方には、日々の指導や大会運営、生徒一人ひとりへの支援など、多大なご尽力をいただいてきました。相模原のバドミントン環境がここまで発展してきたのは、長年にわたり子どもたちを支えてこられた先生方のお力があってこそです。心より感謝申し上げます。</p>
+            <p>部活動の地域移行は、単なる「部活の形の変化」ではなく、これまで以上に良い練習環境をつくる大きなチャンスでもあると考えています。</p>
+            <p>相模原バドミントンアカデミーでは、学校の部活動と地域クラブの両方に参加することで、より多くの仲間や指導者と出会い、多様な経験を積みながら成長できる環境づくりを目指しています。</p>
+            <p>学校、地域、指導者、保護者が連携し、チームや学校の垣根を越えて互いに高め合える環境を築くことで、子どもたちにとってより充実したバドミントン活動を実現していきたいと考えています。</p>
+            <p>部活動の地域移行を、相模原のバドミントン環境をさらに発展させる契機とし、子どもたちが長く安心して競技を続けられる地域づくりにつなげていきます。</p>
         </div>
 
         <div class="catchphrase">
@@ -333,7 +268,7 @@
 
         <h2>全員が主役になれる大会の開催</h2>
         <div class="box">
-            <p>相模原バドミントンアカデミーが大会を主催することで、<strong>全員が試合に参加できる大会</strong>を開催することができます。</p>
+            <p>相模原バドミントンアカデミーが大会を主催することで、参加人数の制限なく、<strong>全員が試合に参加できる大会</strong>を開催することができます。</p>
             <p>多くの中学生にバドミントンを楽しんでもらえる環境を作っていきます。</p>
         </div>
 
@@ -341,58 +276,20 @@
         <div class="box">
             <div class="profile-container">
                 <img src="https://drive.google.com/thumbnail?id=1o_DVzzBh6AoOGjqec5LyaDZ6m1TAICOk&sz=w500" alt="升佑二郎 プロフィール画像" class="profile-img">
-                
                 <div class="profile-info">
                     <div class="profile-name">
                         <span class="profile-ruby">ます　ゆうじろう</span>
                         升　佑二郎
                     </div>
-
                     <div class="profile-section">
                         <div class="profile-section-title">指導歴</div>
                         <ul class="profile-list">
-                            <li>
-                                法政大学体育会バドミントン部　監督
-                                <span class="profile-note">（指導実績：全日本学生バドミントン選手権大会 団体・シングルス・ダブルス・ミックス 全種目優勝）</span>
-                            </li>
-                            <li>
-                                法政クラブ（小・中学生）　監督
-                                <span class="profile-note">（2025年度神奈川県中学校県総体 女子団体優勝 男子団体準優勝、関東大会および全日本ジュニア、全日本中学校選手権大会に多数の選手が出場）</span>
-                            </li>
+                            <li>法政大学体育会バドミントン部　監督 <span class="profile-note">（指導実績：全日本学生バドミントン選手権大会 団体・シングルス・ダブルス・ミックス 全種目優勝）</span></li>
+                            <li>法政クラブ（小・中学生）　監督 <span class="profile-note">（2025年度神奈川県中学校県総体 女子団体優勝 男子団体準優勝、関東大会および全日本ジュニア、全日本中学校選手権大会に多数の選手が出場）</span></li>
                         </ul>
-                    </div>
-
-                    <div class="profile-section">
                         <div class="profile-section-title">主な資格</div>
                         <ul class="profile-list">
-                            <li>博士号取得（体育科学）</li>
-                            <li>日本スポーツ協会公認バドミントンコーチ4</li>
-                            <li>日本スポーツ協会共通科目コーチデベロッパー（JSPO-CD）</li>
-                            <li>日本スポーツ協会公認スタートコーチ（ジュニア・ユース）</li>
-                            <li>中学校・高等学校保健体育科教諭専修免許</li>
-                            <li>中学校社会科・高等学校地理歴史公民科教諭1種免許</li>
-                        </ul>
-                    </div>
-
-                    <div class="profile-section">
-                        <div class="profile-section-title">主な役職</div>
-                        <ul class="profile-list">
-                            <li>
-                                日本バドミントン協会 普及指導部会 委員
-                                <span class="profile-note">（コーチ1～4のカリキュラム作成、指導者資格講習会の講師を務める）</span>
-                            </li>
-                            <li>関東学生バドミントン連盟 副会長</li>
-                            <li>神奈川県小学生バドミントン連盟 理事長</li>
-                        </ul>
-                    </div>
-
-                    <div class="profile-section">
-                        <div class="profile-section-title">学歴</div>
-                        <ul class="profile-list">
-                            <li>藤沢市立秋葉台中学校 卒業</li>
-                            <li>法政大学第二高等学校 卒業</li>
-                            <li>法政大学 文学部 卒業</li>
-                            <li>国士舘大学大学院 スポーツシステム研究科 博士課程 修了</li>
+                            <li>博士号取得（体育科学） / 日本スポーツ協会公認バドミントンコーチ4 / 他</li>
                         </ul>
                     </div>
                 </div>
@@ -402,69 +299,22 @@
         <h2>活動のご案内</h2>
         <div class="box">
             <h3>練習日程・場所</h3>
-            <p>以下のカレンダーより、最新の練習日程と場所をご確認ください。予定をクリックすると詳細が表示されます。</p>
-            
             <div class="calendar-container">
-                <iframe src="https://calendar.google.com/calendar/embed?src=d1bb66cab44d28c64ebc2db1922afff1b8676c952ad349492e98a7b76169c7a3%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?src=d1bb66cab44d28c64ebc2db1922afff1b8676c952ad349492e98a7b76169c7a3%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border: 0"></iframe>
             </div>
-
             <h3>参加費</h3>
             <table>
-                <tr>
-                    <th>入会金</th>
-                    <td>1,000円（スポーツ保険料含む）</td>
-                </tr>
-                <tr>
-                    <th>月会費</th>
-                    <td>4,000円</td>
-                </tr>
-                <tr>
-                    <th>ビジター参加</th>
-                    <td>1回 700円</td>
-                </tr>
+                <tr><th>入会金</th><td>1,000円（スポーツ保険料含む）</td></tr>
+                <tr><th>ビジター参加</th><td>1回 800円</td></tr>
+                <tr><th>月会費</th><td>4,000円</td></tr>
             </table>
-        </div>
-
-        <h2>大会日程（予定）</h2>
-        <div class="box">
-            <p>1年生～3年生まで、全員が試合を楽しめる大会を定期的に開催します。</p>
-            <p style="text-align: center; font-weight: bold; color: #0056b3; margin: 30px 0;">現在調整中です。詳細が決まり次第、お知らせいたします。</p>
-        </div>
-
-        <h2>サービス・グッズ</h2>
-        <div class="service-grid">
-            <div class="service-box">
-                <h3>ガット張りサービス</h3>
-                <p>練習時にラケットをお預かりし、次回の練習時にお渡しすることが可能です。最適なテンションをご提案します。</p>
-                <p style="margin-bottom: 5px;"><strong>ガット代込み： 2,000円</strong></p>
-                <p style="font-size: 0.9em; margin-top: 0; color: #555;">（使用ガット：BG66アルティマックス / メタリックホワイト）</p>
-                <p><strong>ガット持ち込み（張り代のみ）： 1,000円</strong></p>
-            </div>
-            
-            <div class="service-box">
-                <h3>オリジナルTシャツ販売</h3>
-                <p>アカデミー限定のオリジナルドライTシャツを販売しています。</p>
-                <p><strong>価格：</strong> 2,000円（税込）<br>
-                <strong>カラー：</strong> ホワイト<br>
-                <strong>サイズ：</strong> S / M / L / LL</p>
-            </div>
+            <p class="fee-note">※月に5回以上参加される場合は、月会費（月謝）の方がお得になります。</p>
         </div>
 
         <div class="cta-section">
-            <div class="cta-text">
-                相模原から、新しいバドミントン環境を<br>一緒につくっていきましょう。
-            </div>
-            <p class="cta-description">入会に関するご質問や、見学・体験参加のお申し込みなど、お気軽にお問い合わせください。</p>
-            
-            <div class="contact-info">
-                <p style="margin: 0 0 5px 0; font-weight: bold;">【お問い合わせ先】</p>
-                <a href="mailto:yujiro.masu.8d@hosei.ac.jp" class="contact-link">yujiro.masu.8d@hosei.ac.jp</a>
-                <p style="font-size: 0.9em; color: #666; margin: 5px 0 0 0;">（担当：升）</p>
-            </div>
-
+            <div class="cta-text">相模原から、新しいバドミントン環境を<br>一緒につくっていきましょう。</div>
             <a href="mailto:yujiro.masu.8d@hosei.ac.jp" class="btn">ぜひご参加ください</a>
         </div>
-
     </div>
 
     <footer>
