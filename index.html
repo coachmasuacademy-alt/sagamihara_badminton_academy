@@ -225,6 +225,22 @@
         .profile-list { margin: 0; padding-left: 20px; font-size: 0.95em; color: #444; }
         .profile-list li { margin-bottom: 10px; }
         .profile-note { font-size: 0.85em; color: #e65c00; display: block; margin-top: 3px; font-weight: 500; }
+        
+        /* プロフィール内リンク用デザイン */
+        .profile-link {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 0.85em;
+            color: #004aad;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid #004aad;
+            transition: 0.3s;
+        }
+        .profile-link:hover {
+            color: #e65c00;
+            border-color: #e65c00;
+        }
 
         /* テーブル */
         table {
@@ -316,7 +332,6 @@
 
     <header>
         <div class="header-content">
-            <!-- 変更：サガミン1をヘッダーのメインキャラクターに配置 -->
             <img src="サガミン1.png" alt="相模原バドミントンアカデミー サガミン" class="mascot-img">
             <h1>相模原バドミントンアカデミー</h1>
         </div>
@@ -345,7 +360,6 @@
 
         <h2>中学生の皆さん・先生方へ</h2>
         <div class="box clearfix">
-            <!-- 変更：サガミン2を文章の横にふわふわ浮かべるように配置 -->
             <img src="サガミン2.png" alt="ジャンプするサガミン" class="floating-mascot">
             
             <p>中学生の皆さんには、</p>
@@ -365,7 +379,6 @@
             <p>相模原バドミントンアカデミーが大会を主催することで、参加人数の制限なく、<strong>全員が試合に参加できる大会</strong>を開催することができます。</p>
             <p>多くの中学生にバドミントンを楽しんでもらえる環境を作っていきます。</p>
             
-            <!-- 変更：サガミン3（複数ポーズ）を大会のイメージとして配置 -->
             <img src="サガミン3.png" alt="様々なプレーをするサガミン" class="strip-img">
         </div>
 
@@ -386,10 +399,13 @@
                             <li>
                                 法政大学体育会バドミントン部　監督
                                 <span class="profile-note">（指導実績：全日本学生バドミントン選手権大会 団体・シングルス・ダブルス・ミックス 全種目優勝）</span>
+                                <!-- 追加：法政大学体育会バドミントン部のホームページリンク -->
+                                <a href="https://www.hosei-badminton.com/" target="_blank" rel="noopener noreferrer" class="profile-link">▶ 法政大学体育会バドミントン部 ホームページ</a>
                             </li>
                             <li>
                                 法政クラブ（小・中学生）　監督
-                                <span class="profile-note">（2025年度神奈川県中学校県総体 女子団体優勝 男子団体準優勝、関東大会および全日本ジュニア、全日本中学校選手権大会に多数の選手が出場）</span>
+                                <span class="profile-note">（指導実績：2025年度神奈川県中学校県総体 女子団体優勝 男子団体準優勝、関東大会および全日本ジュニア、全日本中学校選手権大会に多数の選手が出場）</span>
+                                <a href="https://www.housei-badminton.com/" target="_blank" rel="noopener noreferrer" class="profile-link">▶ 法政クラブ ホームページ</a>
                             </li>
                         </ul>
                     </div>
@@ -411,7 +427,7 @@
                         <ul class="profile-list">
                             <li>
                                 日本バドミントン協会 普及指導部会 委員
-                                <span class="profile-note">（コーチ1～4のカリキュラム作成、指導者資格講習会の講師を務める）</span>
+                                <span class="profile-note">（指導者資格バドミントンコーチ1～4のカリキュラム作成および養成講習会の講師を務める）</span>
                             </li>
                             <li>関東学生バドミントン連盟 副会長</li>
                             <li>神奈川県小学生バドミントン連盟 理事長</li>
@@ -439,7 +455,7 @@
                     <th>月曜日</th>
                     <td>
                         橋本高校　19時30分～21時30分
-                        <span class="schedule-note">※相原クラブの中学生と合同練習</span>
+                        <span class="schedule-note">※相原クラブと合同練習</span>
                     </td>
                 </tr>
                 <tr>
@@ -453,7 +469,7 @@
                     <th>水曜日</th>
                     <td>
                         相原小学校　19時30分～21時30分
-                        <span class="schedule-note">※相原クラブの中学生と合同練習</span>
+                        <span class="schedule-note">※相原クラブと合同練習</span>
                     </td>
                 </tr>
                 <tr>
@@ -531,7 +547,6 @@
 
         <!-- 統合したお問い合わせ＆参加セクション -->
         <div class="cta-section">
-            <!-- 変更：サガミン4（複数ポーズ）を一番下の盛り上げバナーとして配置 -->
             <img src="サガミン4.png" alt="ガッツポーズや休憩するサガミン" class="strip-img" style="margin-top: 0; margin-bottom: 30px;">
             
             <div class="cta-text">
