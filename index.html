@@ -56,6 +56,7 @@
             z-index: 1;
         }
 
+        /* ヘッダー用マスコット（サガミン1） */
         .mascot-img {
             width: 180px;
             height: auto;
@@ -63,10 +64,31 @@
             animation: floating 3s ease-in-out infinite;
         }
 
+        /* 各所に配置するマスコット共通のアニメーション */
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
+        }
+
+        /* コンテンツ内に回り込ませるマスコット（サガミン2） */
+        .floating-mascot {
+            width: 140px;
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+            animation: floating 3.5s ease-in-out infinite;
+        }
+
+        /* 横長のマスコット画像（サガミン3, サガミン4） */
+        .strip-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: block;
         }
 
         header h1 {
@@ -106,6 +128,13 @@
         .box:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* 回り込み解除用 */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
         }
 
         .intro-box p {
@@ -209,10 +238,7 @@
             font-size: 0.95em; color: #e65c00; font-weight: 700; margin-top: 10px;
             background: #fff4e6; padding: 10px 15px; border-radius: 8px; display: inline-block;
         }
-        /* スケジュールの未定部分の色を薄くする */
-        .tbd {
-            color: #999;
-        }
+        .tbd { color: #999; }
 
         /* カレンダー埋め込み */
         .calendar-container {
@@ -267,6 +293,7 @@
         @media screen and (max-width: 600px) {
             header { padding: 70px 15px 90px; }
             .mascot-img { width: 140px; }
+            .floating-mascot { width: 100px; margin-left: 10px; }
             header h1 { font-size: 1.8em; }
             .catchphrase { font-size: 1.6em; }
             .box { padding: 25px 20px; }
@@ -288,8 +315,8 @@
 
     <header>
         <div class="header-content">
-            <!-- マスコット画像 -->
-            <img src="相模原バドミントンアカデミー.png" alt="相模原バドミントンアカデミー マスコット" class="mascot-img">
+            <!-- 変更：サガミン1をヘッダーのメインキャラクターに配置 -->
+            <img src="サガミン1.png" alt="相模原バドミントンアカデミー サガミン" class="mascot-img">
             <h1>相模原バドミントンアカデミー</h1>
         </div>
     </header>
@@ -316,7 +343,10 @@
         </div>
 
         <h2>中学生の皆さん・先生方へ</h2>
-        <div class="box">
+        <div class="box clearfix">
+            <!-- 変更：サガミン2を文章の横にふわふわ浮かべるように配置 -->
+            <img src="サガミン2.png" alt="ジャンプするサガミン" class="floating-mascot">
+            
             <p>中学生の皆さんには、</p>
             <div class="target-list">
                 <ul>
@@ -333,6 +363,9 @@
         <div class="box">
             <p>相模原バドミントンアカデミーが大会を主催することで、参加人数の制限なく、<strong>全員が試合に参加できる大会</strong>を開催することができます。</p>
             <p>多くの中学生にバドミントンを楽しんでもらえる環境を作っていきます。</p>
+            
+            <!-- 変更：サガミン3（複数ポーズ）を大会のイメージとして配置 -->
+            <img src="サガミン3.png" alt="様々なプレーをするサガミン" class="strip-img">
         </div>
 
         <h2>指導者プロフィール</h2>
@@ -403,7 +436,7 @@
             <table>
                 <tr>
                     <th>月曜日</th>
-                    <td class="tbd">未定</td>
+                    <td>橋本高校　19時30分～21時30分</td>
                 </tr>
                 <tr>
                     <th>火曜日</th>
@@ -411,7 +444,7 @@
                 </tr>
                 <tr>
                     <th>水曜日</th>
-                    <td class="tbd">未定</td>
+                    <td>相原小学校　19時30分～21時30分</td>
                 </tr>
                 <tr>
                     <th>木曜日</th>
@@ -482,6 +515,9 @@
 
         <!-- 統合したお問い合わせ＆参加セクション -->
         <div class="cta-section">
+            <!-- 変更：サガミン4（複数ポーズ）を一番下の盛り上げバナーとして配置 -->
+            <img src="サガミン4.png" alt="ガッツポーズや休憩するサガミン" class="strip-img" style="margin-top: 0; margin-bottom: 30px;">
+            
             <div class="cta-text">
                 相模原から、新しいバドミントン環境を<br>一緒につくっていきましょう。
             </div>
